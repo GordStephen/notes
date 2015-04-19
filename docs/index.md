@@ -1,17 +1,5 @@
 # Welcome to Gord's Notebook 
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
+This is where I record an assortment of (generally quantitative) techniques for research and problem solving that I've picked up over the years and have found to be useful in various domains.
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+I tend to forget the details of this stuff when I go for a while without using it, so outlining them here helps me solidify my understanding and improve my eventual recall, while also providing a one-stop reference that makes it quicker for me to pick something back up after I've been away from it.
