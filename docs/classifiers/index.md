@@ -1,3 +1,0 @@
-# Classifiers
-
-## Helpful Resources
