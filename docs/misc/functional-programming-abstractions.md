@@ -7,7 +7,7 @@ A functor is a data structure that can be mapped over.
 
 ### Implemented Functions 
 #### fmap
-In Haskell, every functor typeclass implementation defines a function `fmap` to map a function over the functors value(s):
+In Haskell, every functor typeclass implementation defines a function `fmap` to map a function over the functor's value(s):
 
     fmap :: f x -> (x -> y) -> f y
 
