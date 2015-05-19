@@ -1,0 +1,2 @@
+- Mod ReadTheDocs theme to allow for custom breadcrumbs root (ie not "Docs")
+- Remove H1 headings from page section nav (titles are usually redundant)

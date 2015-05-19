@@ -1,4 +1,4 @@
-# Welcome to Gord's Notebook 
+# Gord's Notebook 
 
 This is where I record an assortment of (generally quantitative) techniques for research and problem solving that I've picked up over the years and have found to be useful in various domains.
 
