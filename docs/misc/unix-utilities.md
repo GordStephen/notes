@@ -24,7 +24,7 @@ Performs a line-by-line regex-based find/replace on an input file or `stdin` str
 
 ## `awk`
 
-Automatically parses line-by-line file or `stdin` stream input with delimiters (eg a CSV file) into multiple input variables, which can be manipulated and output to `stdout`. Useful in pipelines as a mapping operation over tabular/record-based data.
+Automatically parses line-by-line file or `stdin` stream input with delimiters (eg a CSV file) into multiple input variables, which can be manipulated with and output to `stdout`. Useful in pipelines as a mapping operation over tabular/record-based data.
 
 ## Perl
 
@@ -39,3 +39,11 @@ Perl "micro-scripts" can be particularily useful for easily combining find/repla
 ## `read`
 
 Reads a line from `stdin`. Mainly useful in shell scripts for accepting interactive input or piping stream output into a while-loop for more sophisticated processing. 
+
+## `sort`
+
+Concatenates and sorts the input stream (or files) and returns the results to `stdout`.
+
+## `uniq`
+
+Eliminates *adjacent* duplicate lines from input stream (or file) and returns results to output stream (or file). 
