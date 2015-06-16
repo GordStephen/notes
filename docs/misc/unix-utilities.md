@@ -42,8 +42,12 @@ Reads a line from `stdin`. Mainly useful in shell scripts for accepting interact
 
 ## `sort`
 
-Concatenates and sorts the input stream (or files) and returns the results to `stdout`.
+Concatenates and sorts the input stream (or files) and returns the results to `stdout`. Can take a delimeter and sort on specified columns of tabular data.
 
 ## `uniq`
 
-Eliminates *adjacent* duplicate lines from input stream (or file) and returns results to output stream (or file). 
+Eliminates *adjacent* duplicate lines from input stream (or file) and returns results to output stream (or file). Can also prepend the count of adjacent lines (useful for "histogramming" categorical data in combination with `sort`).
+
+## `cut`
+
+Removes subsets of lines passed in through a file or stream. Useful for filtering out unnessecary columns from tabular datasets.
