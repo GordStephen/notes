@@ -31,6 +31,9 @@ Mapping a composition of two functions over a functor should return the same res
 ### Monoid Laws
 
 ## Monads 
+
+A monad encapsulates one or more values in a specific computational context that can be referenced or propogated through subsequent computations.
+
 ### Implemented Functions 
 #### Bind
 Takes some monadic context, extracts the value(s), and applies those values to a function that returns some other value in a monadic context:
