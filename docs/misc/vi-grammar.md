@@ -38,11 +38,11 @@ These lists are by no means exhaustive, but when taken together they can provide
 | Previous beginning of...  | `b`     | `(`         | `{`           |
 | Next end of...            | `e`     | `)`         | `}`           |
 
- - Previous in-line search hit for character 's' - Fs
- - Next in-line search hit for character 's' - Fs
+ - Previous in-line search hit for character 's' - `Fs`
+ - Next in-line search hit for character 's' - `Fs`
 
- - Character after previous in-line search hit for character 's' - Ts
- - Character before next in-line search hit for character 's' - Ts
+ - Character after previous in-line search hit for character 's' - `Ts`
+ - Character before next in-line search hit for character 's' - `Ts`
 
  - Previous in-document search hit for "searchterm" - `?searchterm`
  - Next in-document search hit for "searchterm" - `\searchterm`
