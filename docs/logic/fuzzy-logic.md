@@ -1,7 +1,0 @@
-# Fuzzy Logic
-
-## Fuzzification
-
-##
-
-## Defuzzification
