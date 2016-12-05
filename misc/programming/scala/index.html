@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pdsite">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Scala | Gord's Notebook</title>
+  <title>Scala Concepts and Nomenclature | Gord's Notebook</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -166,10 +166,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     </nav>
 
     <div class="container">
+            <div class="page-header"><h1>Scala Concepts and Nomenclature</h1></div>
       	<div class="row">
 	    <div class="col-md-9">
-		<h1 id="scala-concepts-and-nomenclature">Scala Concepts and Nomenclature</h1>
-<h2 id="classes">Classes</h2>
+		<h2 id="classes">Classes</h2>
 <p>Classes are &quot;static templates that can be instantiated into many independent entities at runtime&quot; [<a href="http://scala-exercises.47deg.com/koans#classes">1</a>]. They combine data / record structures (internal state) and local methods that can manipulate that state (as well as doing other typical function things).</p>
 <p>Declaring a class constructor argument as a <code>val</code> automatically defines a getter to externally examine the value (e.g. <code>println(someClassInstance.someParam)</code>), while declaring it as a <code>var</code> also allows its value to be changed externally via assignment (e.g. <code>someClassInstance.someParam = &quot;someValue&quot;</code>). If neither is declared the parameter is not directly accessible outside of the class.</p>
 <h3 id="extension-inheritance">Extension / Inheritance</h3>
@@ -200,9 +200,8 @@ y = <span class="fu">SomeCaseClass1</span>(<span class="dv">1</span>, <span clas
 	    </div>
 	    	    <div class="col-md-3">
 	      <nav id="toc" data-spy="affix" data-offset-top="0">
-		
+		<h4><a href="#">Scala Concepts and Nomenclature</a></h4>
 		<ul>
-<li><a href="#scala-concepts-and-nomenclature">Scala Concepts and Nomenclature</a><ul>
 <li><a href="#classes">Classes</a><ul>
 <li><a href="#extension-inheritance">Extension / Inheritance</a></li>
 </ul></li>
@@ -212,7 +211,6 @@ y = <span class="fu">SomeCaseClass1</span>(<span class="dv">1</span>, <span clas
 <li><a href="#traits">Traits</a></li>
 <li><a href="#partial-functions">Partial Functions</a></li>
 <li><a href="#extractors-and-unapply">Extractors and <code>unapply</code></a></li>
-</ul></li>
 </ul>
 	      </nav>
 	    </div>
