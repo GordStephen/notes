@@ -53,7 +53,10 @@
 			    			      
 			    			  			
 		       			
+			  			
+		       			
 			  			    			      active
+			    			      
 			    			      
 			    			  			
 		       ">
@@ -65,9 +68,11 @@
 		    		    <li><a href="/misc/logic/fuzzy-logic">Fuzzy Logic</a></li>
 		    		    <li><a href="/misc/logic/propositional-logic">Propositional Logic</a></li>
 		    		    <li><a href="/misc/logic/quantificational-logic">Quantificational Logic</a></li>
-		    			        		                <li role="separator" class="divider"></li>
+		    			        		                <li><a href="/misc/photo-physics">Photo Physics</a></li>
+	        	        		                <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Programming</li>
 		    		    <li class="active"><a href="/misc/programming/functional-programming-abstractions">Functional Programming Abstractions</a></li>
+		    		    <li><a href="/misc/programming/scala">Scala</a></li>
 		    		    <li><a href="/misc/programming/unix-utilities">Unix Utilities</a></li>
 		    			                      </ul>
 	    </li>
@@ -131,7 +136,7 @@
 <h2 id="functors">Functors</h2>
 <p>A functor is a data structure that can be mapped over.</p>
 <h3 id="implemented-functions">Implemented Functions</h3>
-<h4 id="fmap">fmap</h4>
+<h4 id="fmap"><code>fmap</code></h4>
 <p>In Haskell, every functor typeclass implementation defines a function <code>fmap</code> to map a function over the functor's value(s):</p>
 <pre><code>fmap :: f x -&gt; (x -&gt; y) -&gt; f y</code></pre>
 <h3 id="functor-laws">Functor Laws</h3>
@@ -144,12 +149,38 @@
 <h2 id="applicative-functors">Applicative Functors</h2>
 <h3 id="implemented-functions-1">Implemented Functions</h3>
 <h3 id="applicative-functor-laws">Applicative Functor Laws</h3>
-<h2 id="monoids">Monoids</h2>
+<h2 id="semigroup">Semigroup</h2>
+<p>Semigroup is a class of types in which two values of a type can be associatively combined in some way so as to produce another value of that type. For example, addition or multiplication can combine two numbers into another number, or concatenation can combine two lists into another list.</p>
 <h3 id="implemented-functions-2">Implemented Functions</h3>
+<h4 id="combination">Combination</h4>
+<p>In Haskell, the infix operator <code>&lt;&gt;</code> represents the &quot;combination&quot; function that maps two values into another value of the same type:</p>
+<pre><code>(&lt;&gt;) :: a -&gt; a -&gt; a</code></pre>
+<h3 id="semigroup-laws">Semigroup Laws</h3>
+<h4 id="associativity">Associativity</h4>
+<p>Combination must be associative, that is:</p>
+<pre><code>a &lt;&gt; (b &lt;&gt; c) == (a &lt;&gt; b) &lt;&gt; c</code></pre>
+<p>This restriction is why addition and multiplication are semigroup instances for numbers but subtraction and division are not.</p>
+<h2 id="monoids">Monoids</h2>
+<p>A monoid is a special case of a semigroup where each type instance also has some identity or unit value that can be combined with some other value to return that other value. For example, the identity value for numeric addition would be 0, while for numeric multiplication it would be 1, or for list concatenation it would be the empty list.</p>
+<h3 id="implemented-functions-3">Implemented Functions</h3>
+<h4 id="combination-1">Combination</h4>
+<p>Inherited directly from Semigroup. In Haskell the Monoid combination function is called <code>mappend</code> and is simply:</p>
+<pre><code>mappend :: a -&gt; a -&gt; a
+mappend = (&lt;&gt;)</code></pre>
+<h4 id="identity">Identity</h4>
+<p>In Haskell the identity value for a given monoidal type is given by <code>empty</code>:</p>
+<pre><code>mempty :: a</code></pre>
 <h3 id="monoid-laws">Monoid Laws</h3>
+<h4 id="associativity-1">Associativity</h4>
+<p>Inherited directly from Semigroup. As above:</p>
+<pre><code>a `mappend` (b `mappend` c) == (a `mappend` b) `mappend` c</code></pre>
+<h4 id="existence-of-an-identity-value">Existence of an identity value</h4>
+<p>The identity value must in fact be an identity value, that is:</p>
+<pre><code>a `mappend` mempty == a
+mempty `mappend` a == a</code></pre>
 <h2 id="monads">Monads</h2>
 <p>A monad encapsulates one or more values in a specific computational context that can be referenced or propogated through subsequent computations.</p>
-<h3 id="implemented-functions-3">Implemented Functions</h3>
+<h3 id="implemented-functions-4">Implemented Functions</h3>
 <h4 id="bind">Bind</h4>
 <p>Takes some monadic context, extracts the value(s), and applies those values to a function that returns some other value in a monadic context:</p>
 <pre><code>(&gt;&gt;=) :: m x -&gt; (x -&gt; m y) -&gt; m y</code></pre>
@@ -173,7 +204,7 @@ x &gt;&gt;= g &gt;&gt;= f == x &gt;&gt;= a</code></pre>
 <p>Defining this here makes monadic associativity (below) easier to represent.</p>
 <h3 id="monad-laws">Monad Laws</h3>
 <p>Bind and return need to be defined such that each of the following hold:</p>
-<h4 id="associativity">Associativity</h4>
+<h4 id="associativity-2">Associativity</h4>
 <p>While monadic function composition doesn't need to be commutative, it does need to be associative.</p>
 <pre><code>f &lt;=&lt; (g &lt;=&lt; h) == (f &lt;=&lt; g) &lt;=&lt; h</code></pre>
 <h4 id="left-identity">Left Identity</h4>
@@ -197,12 +228,16 @@ x &gt;&gt;= g &gt;&gt;= f == x &gt;&gt;= a</code></pre>
 <li><a href="#implemented-functions-1">Implemented Functions</a></li>
 <li><a href="#applicative-functor-laws">Applicative Functor Laws</a></li>
 </ul></li>
-<li><a href="#monoids">Monoids</a><ul>
+<li><a href="#semigroup">Semigroup</a><ul>
 <li><a href="#implemented-functions-2">Implemented Functions</a></li>
+<li><a href="#semigroup-laws">Semigroup Laws</a></li>
+</ul></li>
+<li><a href="#monoids">Monoids</a><ul>
+<li><a href="#implemented-functions-3">Implemented Functions</a></li>
 <li><a href="#monoid-laws">Monoid Laws</a></li>
 </ul></li>
 <li><a href="#monads">Monads</a><ul>
-<li><a href="#implemented-functions-3">Implemented Functions</a></li>
+<li><a href="#implemented-functions-4">Implemented Functions</a></li>
 <li><a href="#monad-laws">Monad Laws</a></li>
 </ul></li>
 <li><a href="#helpful-resources">Helpful Resources</a></li>
