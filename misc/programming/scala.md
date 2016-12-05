@@ -1,4 +1,4 @@
-# Scala Concepts and Nomenclature
+% Scala Concepts and Nomenclature
 
 ## Classes
 
