@@ -53,7 +53,10 @@
 			    			      
 			    			  			
 		       			
+			  			
+		       			
 			  			    			      
+			    			      
 			    			      
 			    			  			
 		       ">
@@ -65,9 +68,11 @@
 		    		    <li><a href="/misc/logic/fuzzy-logic">Fuzzy Logic</a></li>
 		    		    <li><a href="/misc/logic/propositional-logic">Propositional Logic</a></li>
 		    		    <li><a href="/misc/logic/quantificational-logic">Quantificational Logic</a></li>
-		    			        		                <li role="separator" class="divider"></li>
+		    			        		                <li><a href="/misc/photo-physics">Photo Physics</a></li>
+	        	        		                <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Programming</li>
 		    		    <li><a href="/misc/programming/functional-programming-abstractions">Functional Programming Abstractions</a></li>
+		    		    <li><a href="/misc/programming/scala">Scala</a></li>
 		    		    <li><a href="/misc/programming/unix-utilities">Unix Utilities</a></li>
 		    			                      </ul>
 	    </li>
@@ -155,24 +160,24 @@
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">...word</th>
-<th align="left">...sentence</th>
-<th align="left">...paragraph</th>
+<th></th>
+<th>...word</th>
+<th>...sentence</th>
+<th>...paragraph</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Previous beginning of...</td>
-<td align="left"><code>b</code></td>
-<td align="left"><code>(</code></td>
-<td align="left"><code>{</code></td>
+<td>Previous beginning of...</td>
+<td><code>b</code></td>
+<td><code>(</code></td>
+<td><code>{</code></td>
 </tr>
 <tr class="even">
-<td align="left">Next end of...</td>
-<td align="left"><code>e</code></td>
-<td align="left"><code>)</code></td>
-<td align="left"><code>}</code></td>
+<td>Next end of...</td>
+<td><code>e</code></td>
+<td><code>)</code></td>
+<td><code>}</code></td>
 </tr>
 </tbody>
 </table>
@@ -189,40 +194,105 @@
 <table>
 <thead>
 <tr class="header">
-<th align="left">Action</th>
-<th align="left">Operator symbol</th>
+<th>Action</th>
+<th>Operator symbol</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Change (delete + insert something new)</td>
-<td align="left"><code>c</code></td>
+<td>Change (delete + insert something new)</td>
+<td><code>c</code></td>
 </tr>
 <tr class="even">
-<td align="left">Delete (cut to register)</td>
-<td align="left"><code>d</code></td>
+<td>Delete (cut to register)</td>
+<td><code>d</code></td>
 </tr>
 <tr class="odd">
-<td align="left">Yank (copy to register)</td>
-<td align="left"><code>y</code></td>
+<td>Yank (copy to register)</td>
+<td><code>y</code></td>
 </tr>
 <tr class="even">
-<td align="left">Put (paste from register)</td>
-<td align="left"><code>p</code></td>
+<td>Put (paste from register)</td>
+<td><code>p</code></td>
 </tr>
 <tr class="odd">
-<td align="left">Indent</td>
-<td align="left"><code>&gt;</code></td>
+<td>Indent</td>
+<td><code>&gt;</code></td>
 </tr>
 <tr class="even">
-<td align="left">Reverse Indent</td>
-<td align="left"><code>&lt;</code></td>
+<td>Reverse Indent</td>
+<td><code>&lt;</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="text-objects">Text objects</h3>
 <p>A text object represents the innermost meaningful grouping of document text that contains the cursor, pre-qualified with either <code>a</code> (&quot;<strong>a</strong>...&quot;, &quot;<strong>all</strong> the...&quot;) or <code>i</code> (&quot;__i__nside&quot;):</p>
-<p>| | select <strong>a</strong>... | select __i__nside a... | |-|-----------------|------------------------| | __w__ord | <code>aw</code> | <code>iw</code> | | __s__entence | <code>as</code> | <code>is</code> | | __p__aragraph | <code>ap</code> | <code>ip</code> | | HTML/XML __t__ag | <code>at</code> | <code>it</code> | | <strong>(</strong>...<strong>)</strong> | <code>a(</code>, <code>a)</code> | <code>i(</code>, <code>i)</code> | | <strong>[<strong>...</strong>]</strong> | <code>a[</code>, <code>a]</code> | <code>i[</code>, <code>i]</code> | | <strong>{</strong>...<strong>}</strong> | <code>a{</code>, <code>a}</code> | <code>i{</code>, <code>i}</code> | | <strong>&lt;</strong>...<strong>&gt;</strong> | <code>a&lt;</code>, <code>a&gt;</code> | <code>i&lt;</code>, <code>i&gt;</code> | | <strong>&quot;</strong>...<strong>&quot;</strong> | <code>a&quot;</code> | <code>i&quot;</code> | | <strong>'</strong>...<strong>'</strong> | <code>a'</code> | <code>i'</code> | | <strong>`</strong>...<strong>`</strong> | <code>a`</code> | <code>i`</code> |</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>select <strong>a</strong>...</th>
+<th>select __i__nside a...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>__w__ord</td>
+<td><code>aw</code></td>
+<td><code>iw</code></td>
+</tr>
+<tr class="even">
+<td>__s__entence</td>
+<td><code>as</code></td>
+<td><code>is</code></td>
+</tr>
+<tr class="odd">
+<td>__p__aragraph</td>
+<td><code>ap</code></td>
+<td><code>ip</code></td>
+</tr>
+<tr class="even">
+<td>HTML/XML __t__ag</td>
+<td><code>at</code></td>
+<td><code>it</code></td>
+</tr>
+<tr class="odd">
+<td><strong>(</strong>...<strong>)</strong></td>
+<td><code>a(</code>, <code>a)</code></td>
+<td><code>i(</code>, <code>i)</code></td>
+</tr>
+<tr class="even">
+<td><strong>[<strong>...</strong>]</strong></td>
+<td><code>a[</code>, <code>a]</code></td>
+<td><code>i[</code>, <code>i]</code></td>
+</tr>
+<tr class="odd">
+<td><strong>{</strong>...<strong>}</strong></td>
+<td><code>a{</code>, <code>a}</code></td>
+<td><code>i{</code>, <code>i}</code></td>
+</tr>
+<tr class="even">
+<td><strong>&lt;</strong>...<strong>&gt;</strong></td>
+<td><code>a&lt;</code>, <code>a&gt;</code></td>
+<td><code>i&lt;</code>, <code>i&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><strong>&quot;</strong>...<strong>&quot;</strong></td>
+<td><code>a&quot;</code></td>
+<td><code>i&quot;</code></td>
+</tr>
+<tr class="even">
+<td><strong>'</strong>...<strong>'</strong></td>
+<td><code>a'</code></td>
+<td><code>i'</code></td>
+</tr>
+<tr class="odd">
+<td><strong>`</strong>...<strong>`</strong></td>
+<td><code>a`</code></td>
+<td><code>i`</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="counts">Counts</h3>
 <p>Operators, text objects, and many movements can be prefixed by integers to indicate that the operation/movement should occur a certain number of times, or the n-th smallest surrounding text object should be selected.</p>
 <h2 id="composing-orthogonal-elements">Composing orthogonal elements</h2>

@@ -7,7 +7,7 @@ _Specifically in Haskell, with occasional references to Scala._
 A functor is a data structure that can be mapped over.
 
 ### Implemented Functions 
-#### fmap
+#### `fmap`
 In Haskell, every functor typeclass implementation defines a function `fmap` to map a function over the functor's value(s):
 
     fmap :: f x -> (x -> y) -> f y
@@ -27,9 +27,50 @@ Mapping a composition of two functions over a functor should return the same res
 ### Implemented Functions 
 ### Applicative Functor Laws
 
+
+## Semigroup
+Semigroup is a class of types in which two values of a type can be associatively combined in some way so as to produce another value of that type. For example, addition or multiplication can combine two numbers into another number, or concatenation can combine two lists into another list.
+
+### Implemented Functions
+#### Combination
+In Haskell, the infix operator `<>` represents the "combination" function that maps two values into another value of the same type:
+
+	(<>) :: a -> a -> a
+
+### Semigroup Laws
+#### Associativity
+Combination must be associative, that is:
+
+	a <> (b <> c) == (a <> b) <> c
+
+This restriction is why addition and multiplication are semigroup instances for numbers but subtraction and division are not.
+
 ## Monoids 
-### Implemented Functions 
+A monoid is a special case of a semigroup where each type instance also has some identity or unit value that can be combined with some other value to return that other value. For example, the identity value for numeric addition would be 0, while for numeric multiplication it would be 1, or for list concatenation it would be the empty list.
+
+### Implemented Functions
+#### Combination
+Inherited directly from Semigroup. In Haskell the Monoid combination function is called `mappend` and is simply:
+	
+	mappend :: a -> a -> a
+	mappend = (<>)
+	
+#### Identity
+In Haskell the identity value for a given monoidal type is given by `empty`:
+
+	mempty :: a
+
 ### Monoid Laws
+#### Associativity
+Inherited directly from Semigroup. As above:
+
+	a `mappend` (b `mappend` c) == (a `mappend` b) `mappend` c
+
+#### Existence of an identity value
+The identity value must in fact be an identity value, that is:
+
+	a `mappend` mempty == a
+	mempty `mappend` a == a
 
 ## Monads 
 

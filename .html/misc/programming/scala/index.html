@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pdsite">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Scala | Gord's Notebook</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Gord's Notebook</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+	    	                <li class="dropdown 			
+			  			
+		       			
+			  			
+		       			
+			  			    			      
+			    			      
+			    			  			
+		       ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dynamical Systems <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+				                <li><a href="/dynamical-systems/hidden-markov-models">Hidden Markov Models</a></li>
+	        	        		                <li><a href="/dynamical-systems/state-space-models">State Space Models</a></li>
+	        	        		                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Time Series</li>
+		    		    <li><a href="/dynamical-systems/time-series/arima-models">Arima Models</a></li>
+		    		    <li><a href="/dynamical-systems/time-series/structural-models">Structural Models</a></li>
+		    			                      </ul>
+	    </li>
+	    	  	                <li class="dropdown 			
+			  			
+		       			
+			  			    			      
+			    			      
+			    			      
+			    			  			
+		       			
+			  			
+		       			
+			  			    			      
+			    			      active
+			    			      
+			    			  			
+		       ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Misc <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+				                <li><a href="/misc/grammar-of-vi">Grammar Of Vi</a></li>
+	        	        		                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Logic</li>
+		    		    <li><a href="/misc/logic/fuzzy-logic">Fuzzy Logic</a></li>
+		    		    <li><a href="/misc/logic/propositional-logic">Propositional Logic</a></li>
+		    		    <li><a href="/misc/logic/quantificational-logic">Quantificational Logic</a></li>
+		    			        		                <li><a href="/misc/photo-physics">Photo Physics</a></li>
+	        	        		                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Programming</li>
+		    		    <li><a href="/misc/programming/functional-programming-abstractions">Functional Programming Abstractions</a></li>
+		    		    <li class="active"><a href="/misc/programming/scala">Scala</a></li>
+		    		    <li><a href="/misc/programming/unix-utilities">Unix Utilities</a></li>
+		    			                      </ul>
+	    </li>
+	    	  	                <li class="dropdown 			
+			  			
+		       			
+			  			
+		       			
+			  			
+		       ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Networks <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+				                <li><a href="/networks/descriptive-measures">Descriptive Measures</a></li>
+	        	        		                <li><a href="/networks/graph-traversal-algorithms">Graph Traversal Algorithms</a></li>
+	        	        		                <li><a href="/networks/network-formation-models">Network Formation Models</a></li>
+	        	                      </ul>
+	    </li>
+	    	  	                <li class="dropdown 			
+			  			    			      
+			    			      
+			    			      
+			    			      
+			    			      
+			    			  			
+		       			
+			  			    			      
+			    			      
+			    			  			
+		       			
+			  			    			      
+			    			  			
+		       ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pattern Recognition <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+				                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Classification</li>
+		    		    <li><a href="/pattern-recognition/classification/bayesian-classifiers">Bayesian Classifiers</a></li>
+		    		    <li><a href="/pattern-recognition/classification/decision-trees">Decision Trees</a></li>
+		    		    <li><a href="/pattern-recognition/classification/distance-based-classifiers">Distance Based Classifiers</a></li>
+		    		    <li><a href="/pattern-recognition/classification/metaclassifiers">Metaclassifiers</a></li>
+		    		    <li><a href="/pattern-recognition/classification/support-vector-machines">Support Vector Machines</a></li>
+		    			        		                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Clustering</li>
+		    		    <li><a href="/pattern-recognition/clustering/k-means">K Means</a></li>
+		    		    <li><a href="/pattern-recognition/clustering/self-organising-map">Self Organising Map</a></li>
+		    			        		                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Regression</li>
+		    		    <li><a href="/pattern-recognition/regression/neural-networks">Neural Networks</a></li>
+		    			                      </ul>
+	    </li>
+	    	            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      	<div class="row">
+	    <div class="col-md-9">
+		<h1 id="scala-concepts-and-nomenclature">Scala Concepts and Nomenclature</h1>
+<h2 id="classes">Classes</h2>
+<p>Classes are &quot;static templates that can be instantiated into many independent entities at runtime&quot; [<a href="http://scala-exercises.47deg.com/koans#classes">1</a>]. They combine data / record structures (internal state) and local methods that can manipulate that state (as well as doing other typical function things).</p>
+<p>Declaring a class constructor argument as a <code>val</code> automatically defines a getter to externally examine the value (e.g. <code>println(someClassInstance.someParam)</code>), while declaring it as a <code>var</code> also allows its value to be changed externally via assignment (e.g. <code>someClassInstance.someParam = &quot;someValue&quot;</code>). If neither is declared the parameter is not directly accessible outside of the class.</p>
+<h3 id="extension-inheritance">Extension / Inheritance</h3>
+<p>A class can extend a single class or any number of traits with the <code>extends</code> and <code>with</code> keywords.</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">class</span> SomeClass <span class="kw">extends</span> SomeTrait
+<span class="kw">class</span> SomeClass2 <span class="kw">extends</span> SomeOtherClass <span class="kw">with</span> SomeTrait <span class="kw">with</span> SomeOtherTrait</code></pre></div>
+<p>If multiple traits define the same methods or data, the order in which classes or traits are listed determines which methods are ultimately inherited (the latest-occurring definition is the one which is kept).</p>
+<h2 id="abstract-and-case-classes">Abstract and Case Classes</h2>
+<p>Case classes are concrete, serializable class instantiations which automatically make their constructor parameters externally accessible, allowing for pattern matching. Unlike regular classes, they do not require <code>new</code> keyword to create.</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">class</span> <span class="fu">SomeClass</span>(a: Int, b:Int)
+<span class="kw">abstract</span> <span class="kw">class</span> SomeAbstractClass
+<span class="kw">case</span> <span class="kw">class</span> <span class="fu">SomeCaseClass1</span>(a: Int, b: Int) <span class="kw">extends</span> SomeAbstractClass
+<span class="kw">case</span> <span class="kw">class</span> <span class="fu">SomeCaseClass2</span>(a: Int, b: Int) <span class="kw">extends</span> SomeAbstractClass
+
+x = <span class="kw">new</span> <span class="fu">SomeClass</span>(<span class="dv">1</span>, <span class="dv">2</span>)
+y = <span class="fu">SomeCaseClass1</span>(<span class="dv">1</span>, <span class="dv">2</span>)</code></pre></div>
+<h2 id="objects">Objects</h2>
+<p>Scala objects are singletons - they are unique in a given program, and any references to an object by definition refer to the exact same entity.</p>
+<h2 id="companion-objects">Companion Objects</h2>
+<p>A Scala object with the same name as a class is known as a companion object. It has internal data and/or methods that are shared among all instances of its corresponding class.</p>
+<h2 id="traits">Traits</h2>
+<p>Traits are abstract, constructor-free, incompletely-defined classes that can provide either abstract or concrete method definitions to be inherited by other classes. Concrete method definitions can reference abstract ones.</p>
+<p>Traits can also contain concrete data that can be mixed in to classes. Unlike data in objects, trait data is independent (not shared) in each instantiation that uses the trait.</p>
+<h2 id="partial-functions">Partial Functions</h2>
+<p>Partial functions (not to be confused with partially <em>applied</em> functions, which relate to currying) are a class representing functions that are only defined for an arbitrary subset of the input domain suggested by the type signature. To fulfill this role, instantiations require the definition of <code>isDefinedAt</code> and <code>apply</code> methods. Case statements with guards automatically provide such definitions (the guard describes <code>isDefinedAt</code> while the result value describes <code>apply</code>).</p>
+<h2 id="extractors-and-unapply">Extractors and <code>unapply</code></h2>
+<p>An <code>unapply</code> function can be defined on a class that allows for effectively reversing the class constructor by returning the constructor arguments that parametrize the specific class instantiation. This can then be applied (implicitly) during pattern matching. Classes that support this method are called extractors. Case classes provide this functionality automatically.</p>
+	    </div>
+	    	    <div class="col-md-3">
+	      <nav id="toc" data-spy="affix" data-offset-top="0">
+		
+		<ul>
+<li><a href="#scala-concepts-and-nomenclature">Scala Concepts and Nomenclature</a><ul>
+<li><a href="#classes">Classes</a><ul>
+<li><a href="#extension-inheritance">Extension / Inheritance</a></li>
+</ul></li>
+<li><a href="#abstract-and-case-classes">Abstract and Case Classes</a></li>
+<li><a href="#objects">Objects</a></li>
+<li><a href="#companion-objects">Companion Objects</a></li>
+<li><a href="#traits">Traits</a></li>
+<li><a href="#partial-functions">Partial Functions</a></li>
+<li><a href="#extractors-and-unapply">Extractors and <code>unapply</code></a></li>
+</ul></li>
+</ul>
+	      </nav>
+	    </div>
+	    	</div>        
+    </div>
+
+    <nav class="navbar navbar-default navbar-static-bottom">
+	<div class="container">
+	<p class="navbar-text"><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">Site contents</span> by <a class="navbar-link" xmlns:cc="http://creativecommons.org/ns#" href="http://notes.gordstephen.ca" property="cc:attributionName" rel="cc:attributionURL">Gord Stephen</a> licensed under <a class="navbar-link" rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p><p class="navbar-text navbar-right">Built with <a class="navbar-link" href="http://pdsite.org">pdsite</a></span></p>
+	</div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
