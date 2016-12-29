@@ -133,53 +133,73 @@
       	<div class="row">
 	    <div class="col-md-9">
 		<p><em>Specifically in Haskell, with occasional references to Scala.</em></p>
-<h2 id="functors">Functors</h2>
-<p>A functor is a data structure that can be mapped over.</p>
-<h3 id="implemented-functions">Implemented Functions</h3>
-<h4 id="fmap"><code>fmap</code></h4>
-<p>In Haskell, every functor typeclass implementation defines a function <code>fmap</code> to map a function over the functor's value(s):</p>
-<pre><code>fmap :: f x -&gt; (x -&gt; y) -&gt; f y</code></pre>
-<h3 id="functor-laws">Functor Laws</h3>
-<h4 id="identity-mapping">Identity Mapping</h4>
-<p>Mapping the identity function over a functor returns the same functor.</p>
-<pre><code>fmap id F = id F </code></pre>
-<h4 id="composed-function-mapping">Composed Function Mapping</h4>
-<p>Mapping a composition of two functions over a functor should return the same result as sequentially mapping each function over the functor.</p>
-<pre><code>fmap (f . g) F = fmap f (fmap g F)</code></pre>
-<h2 id="applicative-functors">Applicative Functors</h2>
-<h3 id="implemented-functions-1">Implemented Functions</h3>
-<h3 id="applicative-functor-laws">Applicative Functor Laws</h3>
 <h2 id="semigroup">Semigroup</h2>
-<p>Semigroup is a class of types in which two values of a type can be associatively combined in some way so as to produce another value of that type. For example, addition or multiplication can combine two numbers into another number, or concatenation can combine two lists into another list.</p>
-<h3 id="implemented-functions-2">Implemented Functions</h3>
+<p>Semigroup is a class of types in which two values of a type can be associatively combined in some way so as to produce another value of that type. For example, addition or multiplication can combine two numbers into another number, or concatenation can combine two lists into another list. It is possible for a given type to have more than one valid semigroup instance (for example, numeric types could have additive or multiplicative instances). Of course, in practise only a single instance can be defined for a given type (in Haskell, alternate applicative instances would need to be defined on a <code>newtype</code> wrapper instead).</p>
+<h3 id="implemented-functions">Implemented Functions</h3>
 <h4 id="combination">Combination</h4>
 <p>In Haskell, the infix operator <code>&lt;&gt;</code> represents the &quot;combination&quot; function that maps two values into another value of the same type:</p>
-<pre><code>(&lt;&gt;) :: a -&gt; a -&gt; a</code></pre>
+<pre><code>(&lt;&gt;) :: Semigroup a =&gt; a -&gt; a -&gt; a</code></pre>
 <h3 id="semigroup-laws">Semigroup Laws</h3>
 <h4 id="associativity">Associativity</h4>
 <p>Combination must be associative, that is:</p>
-<pre><code>a &lt;&gt; (b &lt;&gt; c) == (a &lt;&gt; b) &lt;&gt; c</code></pre>
-<p>This restriction is why addition and multiplication are semigroup instances for numbers but subtraction and division are not.</p>
+<pre><code>x &lt;&gt; (y &lt;&gt; z) == (x &lt;&gt; y) &lt;&gt; z</code></pre>
+<p>(This restriction is why addition and multiplication are semigroup instances for numeric types, but subtraction and division are not.)</p>
 <h2 id="monoids">Monoids</h2>
 <p>A monoid is a special case of a semigroup where each type instance also has some identity or unit value that can be combined with some other value to return that other value. For example, the identity value for numeric addition would be 0, while for numeric multiplication it would be 1, or for list concatenation it would be the empty list.</p>
-<h3 id="implemented-functions-3">Implemented Functions</h3>
+<h3 id="implemented-functions-1">Implemented Functions</h3>
 <h4 id="combination-1">Combination</h4>
 <p>Inherited directly from Semigroup. In Haskell the Monoid combination function is called <code>mappend</code> and is simply:</p>
-<pre><code>mappend :: a -&gt; a -&gt; a
+<pre><code>mappend :: Monoid a =&gt; a -&gt; a -&gt; a
 mappend = (&lt;&gt;)</code></pre>
 <h4 id="identity">Identity</h4>
-<p>In Haskell the identity value for a given monoidal type is given by <code>empty</code>:</p>
-<pre><code>mempty :: a</code></pre>
+<p>In Haskell the identity value for a given monoidal type is given by <code>mempty</code>:</p>
+<pre><code>mempty :: Monoid a =&gt; a</code></pre>
 <h3 id="monoid-laws">Monoid Laws</h3>
 <h4 id="associativity-1">Associativity</h4>
 <p>Inherited directly from Semigroup. As above:</p>
-<pre><code>a `mappend` (b `mappend` c) == (a `mappend` b) `mappend` c</code></pre>
+<pre><code>x `mappend` (y `mappend` z) == (x `mappend` y) `mappend` z</code></pre>
 <h4 id="existence-of-an-identity-value">Existence of an identity value</h4>
 <p>The identity value must in fact be an identity value, that is:</p>
-<pre><code>a `mappend` mempty == a
-mempty `mappend` a == a</code></pre>
+<pre><code>x `mappend` mempty == x
+mempty `mappend` x == x</code></pre>
+<h2 id="functors">Functors</h2>
+<p>A functor is some structure containing values that can be mapped over with a function.</p>
+<h3 id="implemented-functions-2">Implemented Functions</h3>
+<h4 id="mapping">Mapping</h4>
+<p>In Haskell, every functor typeclass implementation defines a function <code>fmap</code> to map a function over the functor's value(s):</p>
+<pre><code>fmap :: Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</code></pre>
+<p>Haskell also has an infix form of this function called <code>&lt;$&gt;</code>.</p>
+<h3 id="functor-laws">Functor Laws</h3>
+<h4 id="identity-mapping">Identity Mapping</h4>
+<p>Mapping the identity function over a functor returns the same functor.</p>
+<pre><code>fmap id myfunctor == id myfunctor</code></pre>
+<h4 id="composed-function-mapping">Composed Function Mapping</h4>
+<p>Mapping a composition of two functions over a functor should return the same result as sequentially mapping each function over the functor.</p>
+<pre><code>fmap (f . g) myfunctor == fmap f (fmap g myfunctor)</code></pre>
+<h2 id="applicative">Applicative</h2>
+<p>An applicative combines the concepts behind both functors and monoids. In Haskell, the Applicative typeclass is a special case of the Functor typeclass (but not the Monoid typeclass). Like monoids, and unlike functors, more than one applicative instance may be possible for a given type.</p>
+<h3 id="implemented-functions-3">Implemented Functions</h3>
+<h4 id="minimal-instance-creation">Minimal instance creation</h4>
+<p>Puts a value into a minimal applicative structure. In Haskell the function is called <code>pure</code>.</p>
+<pre><code>pure :: Applicative f =&gt; a -&gt; f a</code></pre>
+<h4 id="application">Application</h4>
+<p>Similar to functor mapping, but the function being applied is also contained in an applicative, requiring the definition of monoid-like combination rules. In Haskell this operation is represented by the <code>&lt;*&gt;</code> infix function.</p>
+<pre><code>(&lt;*&gt;) :: Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b</code></pre>
+<h3 id="applicative-laws">Applicative Laws</h3>
+<h4 id="identity-application">Identity Application</h4>
+<p>Applying an applicative containing the identity function to some other applicative just returns that other applicative:</p>
+<pre><code>pure id &lt;*&gt; myapplicative == myapplicative</code></pre>
+<h4 id="composed-function-application">Composed Function Application</h4>
+<p>Applying an applicatively-composed function to some value should return the same result as applying the functions successively.</p>
+<pre><code>pure (.) &lt;*&gt; applf &lt;*&gt; applg &lt;*&gt; applx == applf &lt;*&gt; (applg &lt;*&gt; applx)</code></pre>
+<h4 id="homomorphism">Homomorphism</h4>
+<p>Applying a function to a value when both are in minimal applicative structures should yield a new value in an applicative structure that is no different than the result of applying the function to the value independent of any structure.</p>
+<pre><code>pure f &lt;*&gt; pure x == pure (f x)</code></pre>
+<h4 id="interchange">Interchange</h4>
+<p>Applying a function-containing applicative to a value in a minimal applicative structure should give the same result as applying a minimal applicative structure (containing a function that takes a function and applies the original value) to the original function-containing applicative.</p>
+<pre><code>applf &lt;*&gt; pure x == pure ($ x) &lt;*&gt; applf</code></pre>
 <h2 id="monads">Monads</h2>
-<p>A monad encapsulates one or more values in a specific computational context that can be referenced or propogated through subsequent computations.</p>
+<p>A monad encapsulates one or more values in a specific computational context that can be referenced or propogated through subsequent computations. In Haskell, the Monad typeclass is a special case of the Applicative typeclass.</p>
 <h3 id="implemented-functions-4">Implemented Functions</h3>
 <h4 id="bind">Bind</h4>
 <p>Takes some monadic context, extracts the value(s), and applies those values to a function that returns some other value in a monadic context:</p>
@@ -194,12 +214,10 @@ mempty `mappend` a == a</code></pre>
 <p>This function (<code>&lt;=&lt;</code> in Haskell) doesn't need to be explicity declared as it can be derived directly from bind as:</p>
 <pre><code>(&lt;=&lt;) :: (b -&gt; m c) -&gt; (a -&gt; m b) -&gt; (a -&gt; m c)
 f &lt;=&lt; g = (\x -&gt; g x &gt;&gt;= f)</code></pre>
-<p>It's the equivalent of composing functions for normal function application, that is</p>
-<pre><code>f . g = a
-f (g x) == a x</code></pre>
+<p>It's the equivalent of composing functions (<code>.</code>) for normal function application, that is</p>
+<pre><code>f (g x) == (f . g) x</code></pre>
 <p>is to function application as</p>
-<pre><code>f &lt;=&lt; g = a
-x &gt;&gt;= g &gt;&gt;= f == x &gt;&gt;= a</code></pre>
+<pre><code>x &gt;&gt;= g &gt;&gt;= f == x &gt;&gt;= (f &lt;=&lt; g)</code></pre>
 <p>is to monadic function composition.</p>
 <p>Defining this here makes monadic associativity (below) easier to represent.</p>
 <h3 id="monad-laws">Monad Laws</h3>
@@ -214,27 +232,28 @@ x &gt;&gt;= g &gt;&gt;= f == x &gt;&gt;= a</code></pre>
 <p>Binding the return function to a monadic value just returns the original monadic value.</p>
 <pre><code>m &gt;&gt;= return == m</code></pre>
 <h1 id="helpful-resources">Helpful Resources</h1>
-<p><a href="http://learnyouahaskell.com/chapters">Learn You A Haskell</a> is a great introduction to all of this and more. Some of the specific code is a little out of date relative to more recent versions of Haskell but the ideas are all there.</p>
+<p><a href="http://learnyouahaskell.com/chapters">Learn You A Haskell</a> is a great introduction to most of this and more. Some of the specific code is a little out of date relative to more recent versions of Haskell but the ideas are all there.</p>
+<p><a href="http://haskellbook.com/">Haskell Programming from First Principles</a> is an even better resource that builds up these ideas in a very nicely structured sequence. It's a slow burn (monads are past page 700!) and intended to be read sequentially to learn new concepts while reinforcing old ones. Not exactly a concise reference text, but excellent for rigorous self-guided learning.</p>
 	    </div>
 	    	    <div class="col-md-3">
 	      <nav id="toc" data-spy="affix" data-offset-top="0">
 		<h4><a href="#">Functional Programming Abstractions</a></h4>
 		<ul>
-<li><a href="#functors">Functors</a><ul>
-<li><a href="#implemented-functions">Implemented Functions</a></li>
-<li><a href="#functor-laws">Functor Laws</a></li>
-</ul></li>
-<li><a href="#applicative-functors">Applicative Functors</a><ul>
-<li><a href="#implemented-functions-1">Implemented Functions</a></li>
-<li><a href="#applicative-functor-laws">Applicative Functor Laws</a></li>
-</ul></li>
 <li><a href="#semigroup">Semigroup</a><ul>
-<li><a href="#implemented-functions-2">Implemented Functions</a></li>
+<li><a href="#implemented-functions">Implemented Functions</a></li>
 <li><a href="#semigroup-laws">Semigroup Laws</a></li>
 </ul></li>
 <li><a href="#monoids">Monoids</a><ul>
-<li><a href="#implemented-functions-3">Implemented Functions</a></li>
+<li><a href="#implemented-functions-1">Implemented Functions</a></li>
 <li><a href="#monoid-laws">Monoid Laws</a></li>
+</ul></li>
+<li><a href="#functors">Functors</a><ul>
+<li><a href="#implemented-functions-2">Implemented Functions</a></li>
+<li><a href="#functor-laws">Functor Laws</a></li>
+</ul></li>
+<li><a href="#applicative">Applicative</a><ul>
+<li><a href="#implemented-functions-3">Implemented Functions</a></li>
+<li><a href="#applicative-laws">Applicative Laws</a></li>
 </ul></li>
 <li><a href="#monads">Monads</a><ul>
 <li><a href="#implemented-functions-4">Implemented Functions</a></li>
